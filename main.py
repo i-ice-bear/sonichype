@@ -1,17 +1,17 @@
-print("hello, world")
-
-class Main:
-    def __init__(self, _age, _name):
-        self.name = _name
-        self.age = _age
-
-    def __print__statement(self):
-        return f"Name : {self.name}" \
-               f"Age : {self.age} "
-
-    def __str__(self):
-        return self.__print__statement()
+import spacy
+from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot import languages
+from chatterbot import ChatBot
 
 
-anshu = Main("Anshu", 12)
-print(anshu.name)
+nlp = spacy.load("en_core_web_sm")
+chatbot = ChatBot("Chatpot")
+
+exit_conditions = (":quit", ":exit")
+
+while True:
+    __user__input__query = input(" > ")
+    if __user__input__query in exit_conditions:
+        break
+    else:
+        print(f" Entered : {chatbot.get_response(__user__input__query)} ")
